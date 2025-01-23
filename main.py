@@ -1,12 +1,18 @@
+
+
 # This is the main function of the bookbot
 def main():
     # Setting up the code to open the text and return different data
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
-        # Telling the user the word count
-        lettercount = letter_counting(file_contents)
-        word_counting(file_contents)
-        dict_sorting(lettercount)
+    try:
+        with open(input("Enter the path of the file you wish to read: "), 'r') as f: # Opening the users input file
+            file_contents = f.read()
+            # Telling the user the word count
+            lettercount = letter_counting(file_contents)
+            word_counting(file_contents)
+            dict_sorting(lettercount)
+    except FileNotFoundError:
+        print("That file does not exist")
+        main()
 
 # Setting up the function to count the amount of words
 def word_counting(file_contents):
